@@ -1,12 +1,13 @@
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 
 import Brightness6TwoToneIcon from "@mui/icons-material/Brightness6TwoTone";
 import CalculateTwoToneIcon from "@mui/icons-material/CalculateTwoTone";
 import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
 
-function AppBarLabel({ setIsDarkTheme }) {
+function Header({ setIsDarkTheme }) {
   return (
     <Toolbar>
       <CalculateTwoToneIcon
@@ -22,20 +23,24 @@ function AppBarLabel({ setIsDarkTheme }) {
       >
         Calculation practices
       </Typography>
-      <IconButton
-        color="secondary"
-        style={{ marginRight: "15px" }}
-        onClick={() => {
-          setIsDarkTheme((prev) => !prev);
-        }}
-      >
-        <Brightness6TwoToneIcon />
-      </IconButton>
-      <IconButton color="secondary">
-        <SettingsTwoToneIcon />
-      </IconButton>
+      <Tooltip title="Change to dark or light theme">
+        <IconButton
+          color="secondary"
+          style={{ marginRight: "15px" }}
+          onClick={() => {
+            setIsDarkTheme((prev) => !prev);
+          }}
+        >
+          <Brightness6TwoToneIcon />
+        </IconButton>
+      </Tooltip>
+      <Tooltip title="Settings">
+        <IconButton color="secondary">
+          <SettingsTwoToneIcon />
+        </IconButton>
+      </Tooltip>
     </Toolbar>
   );
 }
 
-export default AppBarLabel;
+export default Header;
