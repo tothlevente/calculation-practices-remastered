@@ -17,12 +17,14 @@ function App() {
     palette: {
       mode: "light",
       primary: {
-        main: "#4fc3f7",
-        contrastText: "#01579b",
+        main: "#ffd600",
+      },
+      secondary: {
+        main: "#000",
       },
       background: {
-        default: "#e1f5fe",
-        paper: "#e1f5fe",
+        default: "#fff",
+        paper: "#fff",
       },
     },
   });
@@ -34,12 +36,14 @@ function App() {
     palette: {
       mode: "dark",
       primary: {
-        main: "#424242",
-        contrastText: "#fff",
+        main: "#212121",
+      },
+      secondary: {
+        main: "#ffd600",
       },
       background: {
-        default: "#616161",
-        paper: "#616161",
+        default: "#212121",
+        paper: "#212121",
       },
     },
   });

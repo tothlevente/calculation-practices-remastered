@@ -10,7 +10,7 @@ function AppBarLabel({ setIsDarkTheme }) {
   return (
     <Toolbar>
       <CalculateTwoToneIcon
-        color="inherit"
+        color="secondary"
         style={{ marginRight: "10px", fontSize: "34px" }}
       />
       <Typography
@@ -23,6 +23,7 @@ function AppBarLabel({ setIsDarkTheme }) {
         Calculation practices
       </Typography>
       <IconButton
+        color="secondary"
         style={{ marginRight: "15px" }}
         onClick={() => {
           setIsDarkTheme((prev) => !prev);
@@ -30,7 +31,7 @@ function AppBarLabel({ setIsDarkTheme }) {
       >
         <Brightness6TwoToneIcon />
       </IconButton>
-      <IconButton>
+      <IconButton color="secondary">
         <SettingsTwoToneIcon />
       </IconButton>
     </Toolbar>
