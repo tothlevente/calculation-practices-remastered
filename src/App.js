@@ -16,6 +16,7 @@ import GenerateCalculationButton from "./components/GenerateCalculationButton";
 
 import darkTheme from "./controllers/darkTheme";
 import lightTheme from "./controllers/lightTheme";
+import Footer from "./components/Footer";
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -80,6 +81,7 @@ function App() {
           <GenerateCalculationButton handleCalculation={handleCalculation} />
           <CheckAnswerButton isCorrect={isCorrect} handleCheck={handleCheck} />
         </div>
+        <Footer />
       </ThemeProvider>
     </Stack>
   );
