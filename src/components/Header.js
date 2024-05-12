@@ -1,11 +1,10 @@
 import Toolbar from "@mui/material/Toolbar";
+import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
 
-import Brightness6TwoToneIcon from "@mui/icons-material/Brightness6TwoTone";
 import CalculateTwoToneIcon from "@mui/icons-material/CalculateTwoTone";
-import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
+import Brightness6TwoToneIcon from "@mui/icons-material/Brightness6TwoTone";
 
 function Header({ setIsDarkTheme }) {
   return (
@@ -15,11 +14,10 @@ function Header({ setIsDarkTheme }) {
         style={{ marginRight: "10px", fontSize: "34px" }}
       />
       <Typography
-        variant="h5"
         noWrap
-        component="div"
-        fontFamily="Permanent Marker"
+        fontWeight="bold"
         sx={{ flexGrow: 1 }}
+        style={{ fontWeight: "bold", fontSize: "27px" }}
       >
         Calculation practices
       </Typography>
@@ -32,11 +30,6 @@ function Header({ setIsDarkTheme }) {
           }}
         >
           <Brightness6TwoToneIcon />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title="Settings">
-        <IconButton color="secondary">
-          <SettingsTwoToneIcon />
         </IconButton>
       </Tooltip>
     </Toolbar>

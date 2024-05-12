@@ -1,15 +1,21 @@
 import AppBar from "@mui/material/AppBar";
 import Stack from "@mui/material/Stack";
 
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useEffect, useState } from "react";
-import Header from "./components/Header";
+import { ThemeProvider } from "@mui/material/styles";
 
+import Header from "./components/Header";
 import CssBaseline from "@mui/material/CssBaseline";
-import CalculationNumbers from "./components/CalculationNumbers";
 import CalculationNotice from "./components/CalculationNotice";
-import CorrectAnswerNotice from "./components/CorrectAnswerNotice";
 import WrongAnswerNotice from "./components/WrongAnswerNotice";
+import CalculationFields from "./components/CalculationFields";
+import CheckAnswerButton from "./components/CheckAnswerButton";
+import CalculationNumbers from "./components/CalculationNumbers";
+import CorrectAnswerNotice from "./components/CorrectAnswerNotice";
+import GenerateCalculationButton from "./components/GenerateCalculationButton";
+
+import darkTheme from "./controllers/darkTheme";
+import lightTheme from "./controllers/lightTheme";
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -23,44 +29,6 @@ function App() {
   const minNumber = 1;
   const maxNumber = 9;
 
-  const lightTheme = createTheme({
-    typography: {
-      fontFamily: "Gabarito Variable",
-    },
-    palette: {
-      mode: "light",
-      primary: {
-        main: "#ffd600",
-      },
-      secondary: {
-        main: "#000",
-      },
-      background: {
-        default: "#fff",
-        paper: "#fff",
-      },
-    },
-  });
-
-  const darkTheme = createTheme({
-    typography: {
-      fontFamily: "Gabarito Variable",
-    },
-    palette: {
-      mode: "dark",
-      primary: {
-        main: "#212121",
-      },
-      secondary: {
-        main: "#ffd600",
-      },
-      background: {
-        default: "#212121",
-        paper: "#212121",
-      },
-    },
-  });
-
   function createRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -71,6 +39,16 @@ function App() {
     setUserNumber("");
     setIsWrongNumber(false);
     setIsCorrect(false);
+  }
+
+  function handleCheck() {
+    if (firstNumber + secondNumber === parseInt(userNumber)) {
+      setIsWrongNumber(false);
+      setIsCorrect(true);
+    } else {
+      setIsWrongNumber(true);
+      setIsCorrect(false);
+    }
   }
 
   useEffect(function () {
@@ -84,15 +62,24 @@ function App() {
         <AppBar position="static">
           <Header setIsDarkTheme={setIsDarkTheme} />
         </AppBar>
-        <CalculationNumbers
-          firstNumber={firstNumber}
-          secondNumber={secondNumber}
-          operation={operation}
-          userNumber={userNumber}
-        />
-        <CalculationNotice />
-        <CorrectAnswerNotice />
-        <WrongAnswerNotice />
+        <div style={{ display: "grid", justifyContent: "center", gap: "16px" }}>
+          <CalculationNumbers
+            firstNumber={firstNumber}
+            secondNumber={secondNumber}
+            operation={operation}
+            userNumber={userNumber}
+          />
+          <CalculationNotice isCorrect={isCorrect} />
+          <CorrectAnswerNotice isCorrect={isCorrect} />
+          <WrongAnswerNotice isWrongNumber={isWrongNumber} />
+          <CalculationFields
+            isCorrect={isCorrect}
+            userNumber={userNumber}
+            setUserNumber={setUserNumber}
+          />
+          <GenerateCalculationButton handleCalculation={handleCalculation} />
+          <CheckAnswerButton isCorrect={isCorrect} handleCheck={handleCheck} />
+        </div>
       </ThemeProvider>
     </Stack>
   );

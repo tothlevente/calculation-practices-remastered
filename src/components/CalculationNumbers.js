@@ -11,7 +11,7 @@ function CalculationNumbers({
       style={{
         display: "flex",
         justifyContent: "center",
-        fontSize: "57px",
+        fontSize: "67px",
         fontWeight: "bold",
       }}
     >
